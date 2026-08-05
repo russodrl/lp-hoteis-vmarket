@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /form/
+
+Sitemap: https://hotel.vmarket.com.br/sitemap.xml
