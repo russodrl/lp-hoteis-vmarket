@@ -129,6 +129,18 @@
 
     if (navigator.userAgent) values.ua = navigator.userAgent;
 
+    var host = (window.location.hostname || '').toLowerCase();
+    var segment = url.get('lp_segment') || '';
+    if (!segment) {
+      if (host.indexOf('hotel.') === 0 || host.indexOf('hoteis.') === 0) segment = 'hotel';
+      else if (host.indexOf('fornecedor.') === 0) segment = 'fornecedor';
+      else if (host.indexOf('cotacao.') === 0) segment = 'cotacao';
+      else if (host.indexOf('restaurante.') === 0) segment = 'restaurante';
+      else if (host.indexOf('bar.') === 0) segment = 'bar';
+      else if (host.indexOf('food.') === 0) segment = 'food';
+    }
+    if (segment) values.lp_segment = segment;
+
     var ip = sanitizeIp(readStoredIp() || url.get('ip'));
     if (ip) values.ip = ip;
 
